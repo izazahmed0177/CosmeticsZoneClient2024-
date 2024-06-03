@@ -31,6 +31,8 @@ Design
 
 -[TailwindFlex](https://tailwindflex.com/@sammytg7/user-profile)
 
+-[Flowbite React](https://flowbite-react.com/docs/getting-started/introduction)
+
 Tost & Alert
 
 -[react-hot-toast](https://react-hot-toast.com/)
