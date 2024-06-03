@@ -1,4 +1,5 @@
 // import React from 'react'
+import axios from 'axios';
 import auth from './../../firebase/firebase.config';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import Swal from 'sweetalert2'
@@ -9,7 +10,31 @@ export default function GoogleLogin() {
 
 
     const handleGoogleLogin=()=>{
-        signInWithGoogle();
+        signInWithGoogle().then(result=>{
+            const user=result.user;
+            console.log(user);
+
+            const userinfo={
+                fullName:user.displayName,
+                email:user.email,
+                image:user.photoURL
+            }
+            axios.post("http://localhost:5000/user",userinfo,{
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+          }).then(()=>{
+            
+          })
+
+
+
+
+        });
+
+
+
         Swal.fire({
           position: "top-end",
           icon: "success",

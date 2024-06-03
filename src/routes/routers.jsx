@@ -13,6 +13,8 @@ import Register from "../pages/SignInSignUp/Register";
 import PrivateRouter from "./PrivateRouter";
 import DashbaordLayouts from "../layouts/DashbaordLayouts";
 import DashbaordHome from "../pages/dashbaord/DashbaordHome";
+import Profile from "../components/user/Profile";
+import ProfileEdit from './../components/user/ProfileEdit';
 
 const router=createBrowserRouter([
     {
@@ -67,6 +69,14 @@ const router=createBrowserRouter([
             {
                 index:true,
                 element:<DashbaordHome></DashbaordHome>
+            },
+            {
+                path:"profile",
+                element:<Profile></Profile>
+            },
+            {
+                path:"profileEdit",
+                element:<ProfileEdit/>
             },
         ]
 

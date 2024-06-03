@@ -9,6 +9,7 @@ import auth from "../../firebase/firebase.config";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -30,6 +31,10 @@ export default function Register() {
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
 
+    const firstName=form.firstName.value;
+    const lastName=form.lastName.value;
+    const fullName=form.fullName.value;
+
     console.log(email, password, confirmPassword);
 
     if (password !== confirmPassword) {
@@ -39,7 +44,42 @@ export default function Register() {
     console.log(email, password, confirmPassword);
 
     if (password === confirmPassword) {
-      createUserWithEmailAndPassword(email, password);
+
+
+      createUserWithEmailAndPassword(email, password).then((data)=>{
+        if (data?.user?.email) {
+
+          const userInfo = {
+            email: data?.user?.email,
+            fullName:fullName,
+            firstName:firstName,
+            lastName:lastName,
+          };
+          axios.post("http://localhost:5000/user",userInfo,{
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+          }).then(()=>{
+            
+          })
+
+
+          
+        }
+
+
+
+      });
+
+
+
+
+
+
+
+
+
       Swal.fire({
         position: "top-end",
         icon: "success",

@@ -75,11 +75,11 @@ export default function Navbar() {
 
                     {/* Navigation links */}
                     <div className={`lg:flex flex-col lg:flex-row ${isOpen ? 'block' : 'hidden'} lg:space-x-4 lg:mt-0 mt-4 flex flex-col items-center text-xl`}>
-                        <a href="/" className="text-white  px-4 py-2 hover:text-orange-600 ">Home</a>
-                        <a href="/article" className="text-white  px-4 py-2  hover:text-orange-600">Article</a>
-                        <a href="/blog" className="text-white  px-4 py-2  hover:text-orange-600">Blog</a>
-                        <a href="/about" className="text-white  px-4 py-2  hover:text-orange-600">About</a>
-                        <a href="/contact" className="text-white  px-4 py-2  hover:text-orange-600">Contact Me</a>
+                        <NavLink to={"/"}  className="text-white  px-4 py-2 hover:text-orange-600 ">Home</NavLink>
+                        <NavLink to={"/article"}  className="text-white  px-4 py-2  hover:text-orange-600">Article</NavLink>
+                        <NavLink to={"/blog"}   className="text-white  px-4 py-2  hover:text-orange-600">Blog</NavLink>
+                        <NavLink to={"/about"}   className="text-white  px-4 py-2  hover:text-orange-600">About</NavLink>
+                        <NavLink to={"/contact"}   className="text-white  px-4 py-2  hover:text-orange-600">Contact Me</NavLink>
                     </div>
 
                     <div className="flex gap-2">
