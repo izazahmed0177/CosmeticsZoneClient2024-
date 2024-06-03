@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
+import auth from "../../firebase/firebase.config";
+import Swal from 'sweetalert2'
+import toast from "react-hot-toast";
 
 export default function Navbar() {
 
@@ -10,6 +14,37 @@ export default function Navbar() {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+
+    const [user] = useAuthState(auth);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [signOut] = useSignOut(auth);
+
+    const handleSignout = async()=>{
+
+
+        const success=await signOut()
+        if (success) {
+          // alert("You are sign out!!")
+    
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "You are sign out!!",
+            showConfirmButton: false,
+            timer: 1500
+          });
+    
+    
+    
+          toast.success("You Are Log Out")
+          
+        }
+    }
+
+
+
+
+
 
   return (
    <div>
@@ -48,8 +83,75 @@ export default function Navbar() {
                     </div>
 
                     <div className="flex gap-2">
-                        <NavLink to={"/login"} className="btn btn-outline btn-primary">LogIn</NavLink>
-                        <NavLink to={"/register"} className="btn btn-outline btn-primary">Register</NavLink>
+                        {/* <NavLink to={"/login"} className="btn btn-outline btn-primary">LogIn</NavLink>
+                        <NavLink to={"/register"} className="btn btn-outline btn-primary">Register</NavLink> */}
+
+                        {
+                            !user?.email ?
+                            <>
+                            <NavLink to={"/login"} className="btn btn-outline btn-primary">LogIn</NavLink>
+                             <NavLink to={"/register"} className="btn btn-outline btn-primary">Register</NavLink> 
+
+                            </>
+                            :
+                            <>
+                            <div>
+
+                                {
+                                    !user?.displayName ?
+                                    <>
+                                     <h2 className="text-yellow-500">Avetor</h2>
+
+                                       </>
+                                         :
+                                         <>
+                                        <h2>{user?.displayName}</h2>
+
+                                       </>
+                                }
+                            </div>
+
+                            <NavLink  className={"btn"}
+                                   to={"dashboard"}
+                                       >Dashboard
+                             </NavLink>
+
+                            <button onClick={handleSignout} className="btn">Logout</button>
+
+                            <div className="avatar online">
+                <div className="w-20 rounded-full">
+                     {/* <img src={user?.photoURL} /> */}
+                     
+
+
+                     {
+              !user?.photoURL ?
+              <>
+              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+
+              </>
+              :
+              <>
+              <img src={user?.photoURL} />
+
+              </>
+            }
+
+
+
+
+                </div>
+              </div>
+
+
+
+
+                            </>
+                        }
+
+
+
+
                     </div>
 
 
@@ -62,3 +164,4 @@ export default function Navbar() {
         </div>
   )
 }
+
