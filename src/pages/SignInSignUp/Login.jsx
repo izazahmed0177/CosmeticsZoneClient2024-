@@ -2,11 +2,12 @@
 
 import { NavLink, useNavigate } from "react-router-dom";
 import GoogleLogin from "../../components/Auth/GoogleLogin";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function Login() {
 
@@ -17,20 +18,53 @@ export default function Login() {
       useSignInWithEmailAndPassword(auth);
   
     const handleSignIn = (e) => {
+      const token=localStorage.getItem('token')
       e.preventDefault();
   
       const form = e.target;
       const email = form.email.value;
       const password = form.password.value;
   
-      signInWithEmailAndPassword(email, password);
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "LogIn Successfully",
-        showConfirmButton: false,
-        timer: 1500
-      });
+      signInWithEmailAndPassword(email, password).then(result=>{
+        const user=result.user;
+        const curentUser={
+          email:user.email
+        }
+
+        const headers = {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+
+
+
+      axios.post("http://localhost:5000/user",curentUser,{
+          headers:headers
+      }).then((data)=>{
+          localStorage.setItem('token',data?.data?.token)
+      
+    })
+
+
+
+
+
+
+
+
+      })
+
+      // const signin
+      
+      
+      
+      // Swal.fire({
+      //   position: "top-end",
+      //   icon: "success",
+      //   title: "LogIn Successfully",
+      //   showConfirmButton: false,
+      //   timer: 1500
+      // });
     };
   
     useEffect(() => {

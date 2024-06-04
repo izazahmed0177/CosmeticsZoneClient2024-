@@ -10,6 +10,11 @@ export default function GoogleLogin() {
 
 
     const handleGoogleLogin=()=>{
+
+        const token=localStorage.getItem('token')
+
+
+
         signInWithGoogle().then(result=>{
             const user=result.user;
             console.log(user);
@@ -19,12 +24,18 @@ export default function GoogleLogin() {
                 email:user.email,
                 image:user.photoURL
             }
-            axios.post("http://localhost:5000/user",userinfo,{
-            headers: {
-              "Content-Type": "application/json",
-            },
 
-          }).then(()=>{
+            const headers = {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+              }
+
+
+
+            axios.post("http://localhost:5000/user",userinfo,{
+                headers:headers
+            }).then((data)=>{
+                localStorage.setItem('token',data?.data?.token)
             
           })
 

@@ -45,6 +45,7 @@ export default function AddProduct() {
 
 
     const handleCreateCosmetics =(e) => {
+      const token=localStorage.getItem('token')
         e.preventDefault();
     
         const form = e.target;
@@ -80,18 +81,18 @@ export default function AddProduct() {
 
   
         Swal.fire({
-          title: "Do you want to save the Recipe?",
+          title: "Do you want to save the Cosmetics?",
           showDenyButton: true,
           showCancelButton: true,
-          confirmButtonText: "Save Recipe",
-          denyButtonText: `Don't save Recipe`
+          confirmButtonText: "Save Cosmetics",
+          denyButtonText: `Don't save Cosmetics`
         }).then((result) => {
           /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
             cosmeticsAdd();
-            Swal.fire("Saved Recipe!", "", "success");
+            Swal.fire("Saved Cosmetics!", "", "success");
           } else if (result.isDenied) {
-            Swal.fire("Recipe are not saved", "", "info");
+            Swal.fire("Cosmetics are not saved", "", "info");
           }
         });
 
@@ -100,7 +101,7 @@ export default function AddProduct() {
 
             const headers = {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
               }
 
           const postCosmetics=await axios.post("http://localhost:5000/cosmetics", cosmeticsData,{

@@ -27,7 +27,7 @@ export default function Navbar() {
         .then((res)=>res.json())
         .then((data)=>setUserInfo(data))
         
-      },[user])
+      },[user,userInfoDb,signOut])
       console.log(user);
       console.log(userInfoDb);
 

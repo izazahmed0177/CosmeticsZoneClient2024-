@@ -1,9 +1,75 @@
 // import React from 'react'
 
-import { useLoaderData } from "react-router-dom"
+import axios from "axios";
+import toast from "react-hot-toast";
+import { NavLink, useLoaderData, useLocation, useNavigate } from "react-router-dom"
+import Swal from "sweetalert2";
 
 export default function DashbordProductDetails() {
     const cosmetics=useLoaderData()
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location?.state?.from?.pathname || "/dashboard/dashbaordAllProduct";
+
+
+    const hendleDelete=()=>{
+      const token=localStorage.getItem('token')
+      
+        Swal.fire({
+          title: "Are you sure Delete Cosmetics ?",
+          text: "You won't be able to revert this Cosmetics!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            cosmeticsDelete();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your Cosmetics has been deleted.",
+              icon: "success"
+            });
+          }
+        });
+  
+  
+  
+        const cosmeticsDelete=async()=>{
+
+          const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+  
+          const deleteCosmetics=await axios.delete(`http://localhost:5000/cosmetics/delete/${cosmetics?._id}`,{
+            headers:headers
+          })
+  
+          if (deleteCosmetics?.status === 200) {
+              // alert("Are you Delete this item")
+          toast.success('Successfully Delete Recipe Item')
+          navigate(from);
+            }else{
+              toast.error("Something wrong")
+            }
+  
+        }
+     
+        
+  
+    }
+  
+  
+  
+
+
+
+
+
   return (
     <div className="bg-gray-100 dark:bg-gray-800 py-8">
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,14 +89,26 @@ export default function DashbordProductDetails() {
                     </>
                 }
                 </div>
+
+
                 <div className="flex -mx-2 mb-4">
                     <div className="w-1/2 px-2">
-                        <button className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">Add to Cart</button>
+                    <button className="w-full bg-gray-900 dark:bg-gray-600
+                         text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800
+                          dark:hover:bg-gray-700">
+                        <NavLink to={`/dashboard/editproduct/${cosmetics?._id}` } >Edit Product</NavLink>
+                          </button>
                     </div>
                     <div className="w-1/2 px-2">
-                        <button className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600">Add to Wishlist</button>
+                        <button onClick={hendleDelete} className="w-full bg-red-500 dark:bg-gray-700
+                         text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold
+                          hover:bg-orange-600 dark:hover:bg-gray-600">Delete Product</button>
                     </div>
                 </div>
+
+
+
+
             </div>
             <div className="md:flex-1 px-4">
                 <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Product Name: {cosmetics?.cosmeticsName}</h2>

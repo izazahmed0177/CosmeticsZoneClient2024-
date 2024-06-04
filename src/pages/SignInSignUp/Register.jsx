@@ -1,5 +1,5 @@
 // import React from 'react'
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "../../components/Auth/GoogleLogin";
 import {
   useAuthState,
@@ -14,6 +14,9 @@ import toast from "react-hot-toast";
 
 export default function Register() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location?.state?.from?.pathname || "/login";
   // const [user] = useAuthState(auth);
   const userInfo = useAuthState(auth);
 
@@ -28,26 +31,9 @@ export default function Register() {
 
   const [userInfoDb,setUserInfo]=useState({});
 
-  // useEffect(()=>{
-  //     fetch(`http://localhost:5000/user/${user?.email}`)
-  //     .then((res)=>res.json())
-  //     .then((data)=>setUserInfo(data))
-      
-  //   },[user])
-  //   console.log(userInfoDb);
-
-
-
-
-
-
-
-
-
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    const token=localStorage.getItem('token')
 
     const form = e.target;
     const email = form.email.value;
@@ -96,24 +82,32 @@ export default function Register() {
       createUserWithEmailAndPassword(email, password).then((data)=>{
         if (data?.user?.email) {
 
+
           const userInfo = {
             email: data?.user?.email,
             fullName:fullName,
             firstName:firstName,
             lastName:lastName,
           };
+
+          const headers = {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
           axios.post("http://localhost:5000/user",userInfo,{
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: headers
 
           }).then(()=>{
             
           })
+          navigate(from);
 
 
           toast.success("user create")
           
+        }
+        if (user) {
+          navigate(from);
         }
 
 
@@ -123,19 +117,6 @@ export default function Register() {
 
 
 
-
-
-
-
-
-      // Swal.fire({
-      //   position: "top-end",
-      //   icon: "success",
-      //   title: "Registration Successfully",
-      //   showConfirmButton: false,
-      //   timer: 1500,
-      // });
-      // toast.success("Registration Successfully");
     }
   };
 

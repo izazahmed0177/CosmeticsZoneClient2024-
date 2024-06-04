@@ -20,6 +20,7 @@ import HomeCosmetics from "../pages/otherPage/HomeCosmetics";
 import HomeProductDetails from "../components/home/HomeProductDetails";
 import DashbaordAllProduct from "../pages/dashbaord/DashbaordAllProduct";
 import DashbordProductDetails from "../pages/dashbaord/DashbordProductDetails";
+import EditProduct from "../pages/dashbaord/EditProduct";
 
 const router=createBrowserRouter([
     {
@@ -95,6 +96,10 @@ const router=createBrowserRouter([
             {
                 path:"addproduct",
                 element:<AddProduct/>
+            },
+            {
+                path:"editproduct/:id",
+                element:<EditProduct/>
             },
             {
                 path:"dashbaordAllProduct",

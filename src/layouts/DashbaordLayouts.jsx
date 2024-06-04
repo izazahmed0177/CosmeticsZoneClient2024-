@@ -1,8 +1,24 @@
 // import React from 'react'
 
+import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, Outlet } from "react-router-dom";
+import auth from "../firebase/firebase.config";
+import { useEffect, useState } from "react";
 
 export default function DashbaordLayouts() {
+
+  const [user] = useAuthState(auth);
+  const [userInfo,setUserInfo]=useState({});
+
+  useEffect(()=>{
+      fetch(`http://localhost:5000/user/${user?.email}`)
+      .then((res)=>res.json())
+      .then((data)=>setUserInfo(data))
+      
+    },[user])
+    console.log(userInfo);
+
+
   return (
     <div className="bg-orange-100 min-h-screen">
 
@@ -12,7 +28,23 @@ export default function DashbaordLayouts() {
           <div className="flex items-center text-gray-500">
             <span className="material-icons-outlined p-2 font-text-3xl" >search</span>
             <span className="material-icons-outlined p-2" >notifications</span>
-            <div className="bg-center bg-cover bg-no-repeat rounded-full inline-block h-12 w-12 ml-2" style={{backgroundImage:`url('https://i.pinimg.com/564x/de/0f/3d/de0f3d06d2c6dbf29a888cf78e4c0323.jpg')`}}></div>
+
+            {
+              userInfo?.image  ? 
+              <>
+              <div className="bg-center bg-cover bg-no-repeat rounded-full inline-block h-12 w-12 ml-2" style={{backgroundImage:`url(${userInfo?.image})`}}></div>
+
+
+              </>
+              :
+              <>
+              <div className="bg-center bg-cover bg-no-repeat rounded-full inline-block h-12 w-12 ml-2" style={{backgroundImage:`url('https://i.pinimg.com/564x/de/0f/3d/de0f3d06d2c6dbf29a888cf78e4c0323.jpg')`}}></div>
+
+
+              </>
+
+            }
+
           </div>
       </div>
     </div>
