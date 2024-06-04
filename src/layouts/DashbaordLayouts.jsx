@@ -30,18 +30,18 @@ export default function DashbaordLayouts() {
           </a>
 
 
-          <a href="" className="inline-block text-gray-600 hover:text-black my-4 w-full">
+          <NavLink to={`/dashboard/addproduct`}  className="inline-block text-gray-600 hover:text-black my-4 w-full">
             <span className="material-icons-outlined float-left pr-2">tune</span>
-            Some menu item
+            Add Cosmetics
             <span className="material-icons-outlined float-right">keyboard_arrow_right</span>
-          </a>
+          </NavLink>
 
 
-          <a href="" className="inline-block text-gray-600 hover:text-black my-4 w-full">
+          <NavLink to={`/dashboard/dashbaordAllProduct`} className="inline-block text-gray-600 hover:text-black my-4 w-full">
             <span className="material-icons-outlined float-left pr-2">file_copy</span>
-            Another menu item
+            All Cosmetics
             <span className="material-icons-outlined float-right">keyboard_arrow_right</span>
-          </a>
+          </NavLink>
 
           <a href="" className="inline-block text-gray-600 hover:text-black my-4 w-full">
             <span className="material-icons-outlined float-left pr-2">file_copy</span>
@@ -72,6 +72,12 @@ export default function DashbaordLayouts() {
             Settings Profile
             <span className="material-icons-outlined float-right">keyboard_arrow_right</span>
           </NavLink>
+
+          <a href="/" className="inline-block text-gray-600 hover:text-black my-4 w-full">
+            <span className="material-icons-outlined float-left pr-2">home</span>
+             Home
+            <span className="material-icons-outlined float-right">keyboard_arrow_right</span>
+          </a>
 
           <a href="" className="inline-block text-gray-600 hover:text-black my-4 w-full">
             <span className="material-icons-outlined float-left pr-2">power_settings_new</span>

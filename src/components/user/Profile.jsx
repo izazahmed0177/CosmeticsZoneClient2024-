@@ -59,11 +59,24 @@ export default function Profile() {
         <div
             className="xl:w-[80%] lg:w-[90%] md:w-[90%] sm:w-[92%] xs:w-[90%] mx-auto flex flex-col gap-4 items-center relative lg:-top-8 md:-top-6 sm:-top-4 xs:-top-4">
             {/* <!-- Description --> */}
-            <p className="w-fit text-gray-700 dark:text-gray-400 text-md">Lorem, ipsum dolor sit amet
+       
+
+                {
+                    userInfo?.aboutyou  ? 
+                    <>
+                    <p>{userInfo?.aboutyou}</p>
+
+                    </>
+                    :
+                    <>
+                    <p className="w-fit text-gray-700 dark:text-gray-400 text-md">Lorem, ipsum dolor sit amet
                 consectetur adipisicing elit. Quisquam debitis labore consectetur voluptatibus mollitia dolorem
                 veniam omnis ut quibusdam minima sapiente repellendus asperiores explicabo, eligendi odit, dolore
                 similique fugiat dolor, doloremque eveniet. Odit, consequatur. Ratione voluptate exercitationem hic
                 eligendi vitae animi nam in, est earum culpa illum aliquam.</p>
+
+                    </>
+                }
 
 
             {/* <!-- Detail --> */}
@@ -104,9 +117,9 @@ export default function Profile() {
                             <div className="flex flex-col py-3">
                                 <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Date Of Birth</dt>
                                 {
-                                    userInfo?.dof ? 
+                                    userInfo?.dob ? 
                                     <>
-                                    <dd className="text-lg font-semibold">{userInfo?.dof}</dd>
+                                    <dd className="text-lg font-semibold">{userInfo?.dob}</dd>
 
                                     </>
                                     :
@@ -185,7 +198,7 @@ export default function Profile() {
 
                             <div className="flex flex-col pt-3">
                                 <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Website</dt>
-                                <dd className="text-lg font-semibold">https://www.teclick.com</dd>
+                                <dd className="text-lg font-semibold">https://www.programming-hero.com/</dd>
                             </div>
                         </dl>
                     </div>

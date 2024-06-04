@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import auth from "../../firebase/firebase.config";
@@ -18,6 +18,24 @@ export default function Navbar() {
     const [user] = useAuthState(auth);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [signOut] = useSignOut(auth);
+
+
+    const [userInfoDb,setUserInfo]=useState({});
+
+    useEffect(()=>{
+        fetch(`http://localhost:5000/user/${user?.email}`)
+        .then((res)=>res.json())
+        .then((data)=>setUserInfo(data))
+        
+      },[user])
+      console.log(user);
+      console.log(userInfoDb);
+
+
+
+
+
+
 
     const handleSignout = async()=>{
 
@@ -76,6 +94,7 @@ export default function Navbar() {
                     {/* Navigation links */}
                     <div className={`lg:flex flex-col lg:flex-row ${isOpen ? 'block' : 'hidden'} lg:space-x-4 lg:mt-0 mt-4 flex flex-col items-center text-xl`}>
                         <NavLink to={"/"}  className="text-white  px-4 py-2 hover:text-orange-600 ">Home</NavLink>
+                        <NavLink to={"/homeCosmetics"}  className="text-white  px-4 py-2 hover:text-orange-600 ">Cosmetics</NavLink>
                         <NavLink to={"/article"}  className="text-white  px-4 py-2  hover:text-orange-600">Article</NavLink>
                         <NavLink to={"/blog"}   className="text-white  px-4 py-2  hover:text-orange-600">Blog</NavLink>
                         <NavLink to={"/about"}   className="text-white  px-4 py-2  hover:text-orange-600">About</NavLink>
@@ -87,7 +106,7 @@ export default function Navbar() {
                         <NavLink to={"/register"} className="btn btn-outline btn-primary">Register</NavLink> */}
 
                         {
-                            !user?.email ?
+                            !userInfoDb?.email ?
                             <>
                             <NavLink to={"/login"} className="btn btn-outline btn-primary">LogIn</NavLink>
                              <NavLink to={"/register"} className="btn btn-outline btn-primary">Register</NavLink> 
@@ -98,14 +117,14 @@ export default function Navbar() {
                             <div>
 
                                 {
-                                    !user?.displayName ?
+                                    !userInfoDb?.fullName ?
                                     <>
                                      <h2 className="text-yellow-500">Avetor</h2>
 
                                        </>
                                          :
                                          <>
-                                        <h2>{user?.displayName}</h2>
+                                        <h2 className="text-yellow-500">{userInfoDb.fullName}</h2>
 
                                        </>
                                 }
@@ -125,14 +144,14 @@ export default function Navbar() {
 
 
                      {
-              !user?.photoURL ?
+              !userInfoDb?.image ?
               <>
               <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
 
               </>
               :
               <>
-              <img src={user?.photoURL} />
+              <img src={userInfoDb?.image} />
 
               </>
             }

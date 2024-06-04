@@ -15,6 +15,11 @@ import DashbaordLayouts from "../layouts/DashbaordLayouts";
 import DashbaordHome from "../pages/dashbaord/DashbaordHome";
 import Profile from "../components/user/Profile";
 import ProfileEdit from './../components/user/ProfileEdit';
+import AddProduct from "../pages/dashbaord/AddProduct";
+import HomeCosmetics from "../pages/otherPage/HomeCosmetics";
+import HomeProductDetails from "../components/home/HomeProductDetails";
+import DashbaordAllProduct from "../pages/dashbaord/DashbaordAllProduct";
+import DashbordProductDetails from "../pages/dashbaord/DashbordProductDetails";
 
 const router=createBrowserRouter([
     {
@@ -41,6 +46,15 @@ const router=createBrowserRouter([
             {
                 path:"contact",
                 element:<Contact></Contact>
+            },
+            {
+                path:"homeCosmetics",
+                element:<HomeCosmetics></HomeCosmetics>
+            },
+            {
+                path:"details/:id",
+                element:<HomeProductDetails/>,
+                loader:({params})=>fetch(`http://localhost:5000/cosmetics/get/${params.id}`)
             },
 
 
@@ -77,6 +91,19 @@ const router=createBrowserRouter([
             {
                 path:"profileEdit",
                 element:<ProfileEdit/>
+            },
+            {
+                path:"addproduct",
+                element:<AddProduct/>
+            },
+            {
+                path:"dashbaordAllProduct",
+                element:<DashbaordAllProduct/>
+            },
+            {
+                path:"dashbaordAllProduct/dashbordProductDetails/:id",
+                element:<DashbordProductDetails/>,
+                loader:({params})=>fetch(`http://localhost:5000/cosmetics/get/${params.id}`)
             },
         ]
 

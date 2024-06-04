@@ -7,9 +7,10 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase/firebase.config";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
-import toast from "react-hot-toast";
+// import Swal from "sweetalert2";
+// import toast from "react-hot-toast";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -22,6 +23,28 @@ export default function Register() {
     useCreateUserWithEmailAndPassword(auth);
 
   const [passMatch, setPassMatch] = useState(true);
+
+
+
+  const [userInfoDb,setUserInfo]=useState({});
+
+  // useEffect(()=>{
+  //     fetch(`http://localhost:5000/user/${user?.email}`)
+  //     .then((res)=>res.json())
+  //     .then((data)=>setUserInfo(data))
+      
+  //   },[user])
+  //   console.log(userInfoDb);
+
+
+
+
+
+
+
+
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,13 +60,37 @@ export default function Register() {
 
     console.log(email, password, confirmPassword);
 
+
+    function getUserDb(email) {
+       fetch(`http://localhost:5000/user/${email}`)
+      .then((res)=>res.json())
+      .then((data)=>setUserInfo(data))
+      
+    }
+    getUserDb(email)
+      // fetch(`http://localhost:5000/user/${email}`)
+      // .then((res)=>res.json())
+      // .then((data)=>setUserInfo(data))
+      
+  
+
+
+
+    if (email===userInfoDb.email) {
+      console.log("Älrady user");
+      toast.error(" Alrady exjist user")
+    }
+
+
+
+
     if (password !== confirmPassword) {
       setPassMatch(false);
     }
 
     console.log(email, password, confirmPassword);
 
-    if (password === confirmPassword) {
+    if (password === confirmPassword && email!==userInfoDb.email) {
 
 
       createUserWithEmailAndPassword(email, password).then((data)=>{
@@ -65,6 +112,7 @@ export default function Register() {
           })
 
 
+          toast.success("user create")
           
         }
 
@@ -80,14 +128,14 @@ export default function Register() {
 
 
 
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Registration Successfully",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      toast.success("Registration Successfully");
+      // Swal.fire({
+      //   position: "top-end",
+      //   icon: "success",
+      //   title: "Registration Successfully",
+      //   showConfirmButton: false,
+      //   timer: 1500,
+      // });
+      // toast.success("Registration Successfully");
     }
   };
 
@@ -98,6 +146,7 @@ export default function Register() {
 
     if (error) {
       console.log(error?.message);
+      toast.error(" Alrady exjist user")
     }
   }, [navigate, userInfo, error]);
 
