@@ -7,8 +7,8 @@ export default function Hero() {
         <div className="text-left">
             <h2
                 className="text-4xl font-extrabold leading-10 tracking-tight text-gray-800 sm:text-5xl sm:leading-none md:text-6xl">
-                Hero
-                <span className="font-bold text-blue-500">Section</span>
+                Cosmetics
+                <span className="font-bold text-blue-500"> Zone</span>
                 <span className="text-xl font-semibold rounded-full text-blueGray-500">2.0</span>
             </h2>
             <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">

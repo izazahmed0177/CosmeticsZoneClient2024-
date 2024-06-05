@@ -8,7 +8,7 @@ export default function Header() {
     </div>
     <div className="relative mx-auto max-w-7xl px-6 pt-16 pb-12 sm:px-12 lg:pt-24">
         <header className="mx-auto max-w-2xl text-center">
-            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Welcome to my website</h1>
+            <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Welcome to my Cosmetics Zone</h1>
             <p className="mt-2 text-sm font-semibold text-gray-400">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis eros at sem tincidunt
                 hendrerit.

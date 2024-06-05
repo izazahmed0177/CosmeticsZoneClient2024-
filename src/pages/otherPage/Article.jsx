@@ -10,8 +10,8 @@ export default function Article() {
     <div className="sm:p-4 p-2 sm:w-1/2 flex flex-col justify-between">
         <div>
             <a href="#"
-                className="block sm:mt-2 text-2xl font-semibold text-gray-50 dark:text-white hover:text-gray-600 hover:underline">Lorem
-                rem facere</a>
+                className="block sm:mt-2 text-2xl font-semibold text-gray-50 dark:text-white hover:text-gray-600 hover:underline">
+                Cosmetics Zone</a>
             <p className="mt-2 text-sm text-gray-200 dark:text-gray-400">Lorem ipsum dolor sit, amet consectetur adipisicing
                 elit. Tenetur labore, cum rem facere obcaecati beatae sunt numquam architecto delectus dignissimos
                 explicabo quod pariatur at consequatur sint esse aut Facere. <br></br> Numquam architecto delectus dignissimos

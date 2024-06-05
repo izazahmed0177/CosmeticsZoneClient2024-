@@ -9,7 +9,7 @@ export default function Banner() {
             <div className="">
                 <span className="text-gray-400">Black friday sale</span>
                 <br></br>
-                <span className="text-gray-400 text-4xl text-black font-semibold">20% off every Product</span>
+                <span className="text-gray-400 text-4xl text-black font-semibold">20% off every Cosmetics</span>
             </div>
             <a href="" target="_blank" rel="noreferrer"
                 className="text-white bg-yellow-600 hover:bg-gray-800 px-4 py-2 rounded-lg w-fit  ease duration-300 flex gap-1 items-center group">
