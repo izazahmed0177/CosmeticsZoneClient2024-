@@ -34,7 +34,7 @@ export default function SearchComponent() {
   
     // const handleSearch = async () => {
     //   try {
-    //     const response = await axios.get(`http://localhost:5000/search?q=${query}`);
+    //     const response = await axios.get(`https://cosmetics-zone-server2024.vercel.app/search?q=${query}`);
     //     history.push('/resultsPageSearch', { results: response.data });
     //   } catch (error) {
     //     console.error(error);
@@ -61,7 +61,7 @@ export default function SearchComponent() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:5000/search?query=${query}`
+        `https://cosmetics-zone-server2024.vercel.app/search?query=${query}`
       );
       const data = await response.json();
       setResults(data);

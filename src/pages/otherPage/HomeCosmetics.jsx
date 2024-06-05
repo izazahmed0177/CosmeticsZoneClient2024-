@@ -11,7 +11,7 @@ export default function HomeCosmetics() {
     useEffect(()=>{
         async function getCosmetics() {
       
-            const cosmeticsData = await axios.get('http://localhost:5000/cosmetics');
+            const cosmeticsData = await axios.get('https://cosmetics-zone-server2024.vercel.app/cosmetics');
       if (cosmeticsData?.status === 200) {
         setCosmetics(cosmeticsData?.data);
       }

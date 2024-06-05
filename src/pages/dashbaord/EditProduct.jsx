@@ -21,7 +21,7 @@ export default function EditProduct() {
       async function loadCategore() {
 
 
-        const catagoriData = await axios.get("http://localhost:5000/catagory");
+        const catagoriData = await axios.get("https://cosmetics-zone-server2024.vercel.app/catagory");
         if (catagoriData?.status === 200) {
         //   console.log(catagoriData?.data);
           setCategories(catagoriData?.data);
@@ -29,7 +29,7 @@ export default function EditProduct() {
 
 
 
-        const cosmeticsData = await axios.get(`http://localhost:5000/cosmetics/get/${id}`);
+        const cosmeticsData = await axios.get(`https://cosmetics-zone-server2024.vercel.app/cosmetics/get/${id}`);
        
         if (cosmeticsData?.status === 200) {
           setCosmeticsDetails(cosmeticsData?.data);
@@ -99,7 +99,7 @@ export default function EditProduct() {
                 'Authorization': `Bearer ${token}`
               }
 
-          const postCosmetics=await axios.patch(`http://localhost:5000/cosmetics/edit/${id}`, cosmeticsData,{
+          const postCosmetics=await axios.patch(`https://cosmetics-zone-server2024.vercel.app/cosmetics/edit/${id}`, cosmeticsData,{
             headers:headers,
           });
 

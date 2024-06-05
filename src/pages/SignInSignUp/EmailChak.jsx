@@ -47,7 +47,7 @@ export default function EmailChak() {
     console.log(email);
 
     function getUserDb(email) {
-        fetch(`http://localhost:5000/user/${email}`)
+        fetch(`https://cosmetics-zone-server2024.vercel.app/user/${email}`)
        .then((res)=>res.json())
        .then((data)=>setEmailDb(data))
        

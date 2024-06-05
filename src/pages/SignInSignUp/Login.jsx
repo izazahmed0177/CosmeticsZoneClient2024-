@@ -49,7 +49,7 @@ export default function Login() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         }
-      axios.post("http://localhost:5000/user",curentUser,{
+      axios.post("https://cosmetics-zone-server2024.vercel.app/user",curentUser,{
           headers:headers
       }).then((data)=>{
           localStorage.setItem('token',data?.data?.token)

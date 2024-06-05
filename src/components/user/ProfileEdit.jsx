@@ -12,7 +12,7 @@ export default function ProfileEdit() {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/user/${user?.email}`)
+    fetch(`https://cosmetics-zone-server2024.vercel.app/user/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUserInfo(data));
   }, [user]);
@@ -73,7 +73,7 @@ export default function ProfileEdit() {
 
 
       const editData = await axios
-        .patch(`http://localhost:5000/user/${userInfo?.email}`, userData, {
+        .patch(`https://cosmetics-zone-server2024.vercel.app/user/${userInfo?.email}`, userData, {
           headers:headers
         })
         .then(

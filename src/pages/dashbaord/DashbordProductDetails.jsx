@@ -45,7 +45,7 @@ export default function DashbordProductDetails() {
             'Authorization': `Bearer ${token}`
           }
   
-          const deleteCosmetics=await axios.delete(`http://localhost:5000/cosmetics/delete/${cosmetics?._id}`,{
+          const deleteCosmetics=await axios.delete(`https://cosmetics-zone-server2024.vercel.app/cosmetics/delete/${cosmetics?._id}`,{
             headers:headers
           })
   

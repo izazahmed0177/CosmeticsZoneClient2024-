@@ -28,36 +28,22 @@ export default function Navbar() {
 
 
     const [userInfoDb,setUserInfo]=useState({});
-    const [isFetching, setFetching] = useState(false);
+   
 
     useEffect(()=>{
-        async function fetchData() {
-            setFetching(true);
+    
+       
 
-            const response = await fetch(`http://localhost:5000/user/${user?.email}`)
+        //  fetch(`https://cosmetics-zone-server2024.vercel.app/user/${user?.email}`)
 
-            // console.log("response = ", response);
-            let data = await response.json();
-            setUserInfo(data) //updt state
-              setFetching(false);
-            //   setData(true)
-            // console.log("Data = ", data);
-            
-        }
-        fetchData();
-
-
-        // fetch(`http://localhost:5000/user/${user?.email}`)
-        // .then((res)=>res.json())
-        // .then((data)=>setUserInfo(data))
         
-      },[user,userInfoDb,signOut,isFetching])
-
-      if (isFetching) {
-        // console.log("data loading ......")
-        // alert ("data loading")
+        fetch(`https://cosmetics-zone-server2024.vercel.app/user/${user?.email}`)
+        .then((res)=>res.json())
+        .then((data)=>setUserInfo(data))
         
-    }
+      },[user,userInfoDb,signOut,])
+
+    
 
 
 
@@ -138,7 +124,7 @@ export default function Navbar() {
                         <NavLink to={"/register"} className="btn btn-outline btn-primary">Register</NavLink> */}
 
                         {
-                            !userInfoDb?.email ?
+                            !user?.email ?
                             <>
                             <NavLink to={"/login"} className="btn btn-outline btn-primary">LogIn</NavLink>
                              <NavLink to={"/register"} className="btn btn-outline btn-primary">Register</NavLink> 
@@ -156,7 +142,7 @@ export default function Navbar() {
                                        </>
                                          :
                                          <>
-                                        <h2 className="text-yellow-500">{userInfoDb.fullName}</h2>
+                                        <h2 className="text-yellow-500">{userInfoDb?.fullName}</h2>
 
                                        </>
                                 }

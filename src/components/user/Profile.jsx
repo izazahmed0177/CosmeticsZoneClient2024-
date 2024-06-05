@@ -14,7 +14,7 @@ export default function Profile() {
     const [userInfo,setUserInfo]=useState({});
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/user/${user?.email}`)
+        fetch(`https://cosmetics-zone-server2024.vercel.app/user/${user?.email}`)
         .then((res)=>res.json())
         .then((data)=>setUserInfo(data))
         

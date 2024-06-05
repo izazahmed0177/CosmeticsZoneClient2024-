@@ -34,7 +34,7 @@ export default function ResultsPageSearch() {
 
   useEffect(() => {
     // const query = new URLSearchParams(location.search).get('query');
-    fetch(`http://localhost:5000/search?query=${data1}`)
+    fetch(`https://cosmetics-zone-server2024.vercel.app/search?query=${data1}`)
       .then(response => response.json())
       .then(data => setResults(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -53,7 +53,7 @@ export default function ResultsPageSearch() {
 
 // useEffect(() => {
 //   if (query) {
-//     fetch(`http://localhost:5000/search?query=${query}`)
+//     fetch(`https://cosmetics-zone-server2024.vercel.app/search?query=${query}`)
 //       .then(response => response.json())
 //       .then(data => setResults(data))
 //       .catch(error => console.error('Error fetching data:', error));

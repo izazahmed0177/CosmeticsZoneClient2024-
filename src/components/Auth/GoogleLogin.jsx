@@ -32,7 +32,7 @@ export default function GoogleLogin() {
 
 
 
-            axios.post("http://localhost:5000/user",userinfo,{
+            axios.post("https://cosmetics-zone-server2024.vercel.app/user",userinfo,{
                 headers:headers
             }).then((data)=>{
                 localStorage.setItem('token',data?.data?.token)
