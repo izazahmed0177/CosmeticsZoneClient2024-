@@ -100,9 +100,9 @@ export default function DashbordProductDetails() {
                           </button>
                     </div>
                     <div className="w-1/2 px-2">
-                        <button onClick={hendleDelete} className="w-full bg-red-500 dark:bg-gray-700
+                        <NavLink onClick={hendleDelete} className=" btn w-full bg-red-500 dark:bg-gray-700
                          text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold
-                          hover:bg-orange-600 dark:hover:bg-gray-600">Delete Product</button>
+                          hover:bg-orange-600 dark:hover:bg-gray-600">Delete Product</NavLink>
                     </div>
                 </div>
 

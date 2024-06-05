@@ -1,13 +1,19 @@
 // import React from 'react'
 
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import auth from "../../firebase/firebase.config";
 import Swal from 'sweetalert2'
 import toast from "react-hot-toast";
+import { reload } from "firebase/auth";
 
 export default function Navbar() {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+  
+    const from = location?.state?.from?.pathname || "/login";
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -21,21 +27,41 @@ export default function Navbar() {
 
 
     const [userInfoDb,setUserInfo]=useState({});
+    const [isFetching, setFetching] = useState(false);
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/user/${user?.email}`)
-        .then((res)=>res.json())
-        .then((data)=>setUserInfo(data))
+        async function fetchData() {
+            setFetching(true);
+
+            const response = await fetch(`http://localhost:5000/user/${user?.email}`)
+
+            console.log("response = ", response);
+            let data = await response.json();
+            setUserInfo(data) //updt state
+              setFetching(false);
+            //   setData(true)
+            // console.log("Data = ", data);
+            
+        }
+        fetchData();
+
+
+        // fetch(`http://localhost:5000/user/${user?.email}`)
+        // .then((res)=>res.json())
+        // .then((data)=>setUserInfo(data))
         
-      },[user,userInfoDb,signOut])
+      },[user,userInfoDb,signOut,isFetching])
+
+      if (isFetching) {
+        console.log("data loading ......")
+        // alert ("data loading")
+        
+    }
+
+
+
       console.log(user);
       console.log(userInfoDb);
-
-
-
-
-
-
 
     const handleSignout = async()=>{
 
@@ -43,7 +69,7 @@ export default function Navbar() {
         const success=await signOut()
         if (success) {
           // alert("You are sign out!!")
-    
+          localStorage.clear();
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -55,6 +81,8 @@ export default function Navbar() {
     
     
           toast.success("You Are Log Out")
+          navigate(from);
+          reload()
           
         }
     }

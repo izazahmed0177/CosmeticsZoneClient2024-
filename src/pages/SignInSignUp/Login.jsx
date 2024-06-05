@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "../../components/Auth/GoogleLogin";
 // import Swal from "sweetalert2";
 import { useAuthState, useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -11,11 +11,25 @@ import axios from "axios";
 
 export default function Login() {
 
-    const navigate = useNavigate();
-    const userInfo = useAuthState(auth);
+  const userInfo = useAuthState(auth);
+  
+  const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location?.state?.from?.pathname || "/";
   
     const [signInWithEmailAndPassword, user, loading, error] =
       useSignInWithEmailAndPassword(auth);
+
+
+      
+
+
+
+
+
+
+
   
     const handleSignIn = (e) => {
       const token=localStorage.getItem('token')
@@ -35,9 +49,6 @@ export default function Login() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
         }
-
-
-
       axios.post("http://localhost:5000/user",curentUser,{
           headers:headers
       }).then((data)=>{
@@ -45,36 +56,27 @@ export default function Login() {
       
     })
 
-
-
-
-
-
-
-
       })
 
-      // const signin
-      
-      
-      
-      // Swal.fire({
-      //   position: "top-end",
-      //   icon: "success",
-      //   title: "LogIn Successfully",
-      //   showConfirmButton: false,
-      //   timer: 1500
-      // });
+
+
     };
+
+
   
     useEffect(() => {
       if (userInfo[0]) {
-        navigate("/");
+        navigate(from);
         toast.success("Login Successfully")
       }
-    }, [navigate, userInfo]);
+    }, [from, navigate, userInfo]);
   
     console.log(user, loading, error);
+    if (error) {
+      toast.error("user Email & password do not match")
+    }
+    // console.log(userInfo);
+    // console.log(userInfo[0]);
 
 
 
@@ -121,11 +123,11 @@ export default function Login() {
             <div className="mt-4">
                 <div className="flex justify-between">
                     <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                    <a href="#" className="text-xs text-gray-500">Forget Password?</a>
                 </div>
                 <input className="bg-gray-200 text-gray-700
                  focus:outline-none focus:shadow-outline border border-gray-300
                   rounded py-2 px-4 block w-full appearance-none" type="password" name="password" />
+                    <a href="/emailChak" className="text-1xl text-gray-500 hover:text-blue-600 ">Forget Password?</a>
             </div>
             
             <div className="mt-8">

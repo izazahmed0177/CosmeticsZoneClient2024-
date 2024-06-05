@@ -1,6 +1,6 @@
 // import React from 'react'
 
-import { useLoaderData } from "react-router-dom"
+import { NavLink, useLoaderData } from "react-router-dom"
 
 // import axios from "axios";
 // import { useEffect, useState } from "react";
@@ -29,14 +29,19 @@ export default function HomeProductDetails() {
                     </>
                 }
                 </div>
+
+
+
                 <div className="flex -mx-2 mb-4">
                     <div className="w-1/2 px-2">
-                        <button className="w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">Add to Cart</button>
+                        <NavLink to={`/comingSoon`}  className=" btn w-full bg-gray-900 dark:bg-gray-600 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800 dark:hover:bg-gray-700">Add to Cart</NavLink>
                     </div>
                     <div className="w-1/2 px-2">
-                        <button className="w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600">Add to Wishlist</button>
+                        <NavLink to={`/comingSoon`} className=" btn w-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white py-2 px-4 rounded-full font-bold hover:bg-gray-300 dark:hover:bg-gray-600">Add to Wishlist</NavLink>
                     </div>
                 </div>
+
+
             </div>
             <div className="md:flex-1 px-4">
                 <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">Product Name: {cosmetics?.cosmeticsName}</h2>

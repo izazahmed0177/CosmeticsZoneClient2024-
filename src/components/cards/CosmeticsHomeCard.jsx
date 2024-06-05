@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 
 export default function CosmeticsHomeCard({ cosmetic }) {
-    console.log(cosmetic);
+    // console.log(cosmetic);
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-lg ring-4 ring-red-500 ring-opacity-40 max-w-sm">
     <div className="relative">

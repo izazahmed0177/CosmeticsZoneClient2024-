@@ -1,6 +1,16 @@
 // import React from 'react'
+// import  { PureComponent } from 'react';
+
 
 export default function DashbaordHome() {
+  // static demoUrl = 'https://codesandbox.io/p/sandbox/line-chart-width-xaxis-padding-8v7952';
+
+ 
+
+ 
+
+
+  
   return (
     <div className="w-10/12">
         <div className="flex flex-row">
@@ -24,7 +34,12 @@ export default function DashbaordHome() {
           <div className="bg-white rounded-xl shadow-lg px-6 py-4 w-4/12">
             c
           </div>
-        </div>
+        </div>   
+       
+
+
+
+
       </div>
   )
 }

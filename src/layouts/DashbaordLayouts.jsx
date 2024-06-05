@@ -1,13 +1,17 @@
 // import React from 'react'
 
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState, useSignOut } from "react-firebase-hooks/auth";
 import { NavLink, Outlet } from "react-router-dom";
 import auth from "../firebase/firebase.config";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 export default function DashbaordLayouts() {
 
   const [user] = useAuthState(auth);
+
+  const [signOut] = useSignOut(auth);
   const [userInfo,setUserInfo]=useState({});
 
   useEffect(()=>{
@@ -17,6 +21,31 @@ export default function DashbaordLayouts() {
       
     },[user])
     console.log(userInfo);
+
+
+    const handleSignout = async()=>{
+
+
+      const success=await signOut()
+      if (success) {
+        // alert("You are sign out!!")
+        localStorage.clear();
+  
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "You are sign out!!",
+          showConfirmButton: false,
+          timer: 1500
+        });
+  
+  
+  
+        toast.success("You Are Log Out")
+        
+      }
+  }
+
 
 
   return (
@@ -75,17 +104,17 @@ export default function DashbaordLayouts() {
             <span className="material-icons-outlined float-right">keyboard_arrow_right</span>
           </NavLink>
 
-          <a href="" className="inline-block text-gray-600 hover:text-black my-4 w-full">
+          <NavLink to={`/dashboard/overview`}  className="inline-block text-gray-600 hover:text-black my-4 w-full">
             <span className="material-icons-outlined float-left pr-2">file_copy</span>
-            Another menu item
+            Overview
             <span className="material-icons-outlined float-right">keyboard_arrow_right</span>
-          </a>
+          </NavLink>
           
-          <a href="" className="inline-block text-gray-600 hover:text-black my-4 w-full">
+          {/* <a href="" className="inline-block text-gray-600 hover:text-black my-4 w-full">
             <span className="material-icons-outlined float-left pr-2">file_copy</span>
             Another menu item
             <span className="material-icons-outlined float-right">keyboard_arrow_right</span>
-          </a>
+          </a> */}
 
 
         </div>
@@ -111,7 +140,7 @@ export default function DashbaordLayouts() {
             <span className="material-icons-outlined float-right">keyboard_arrow_right</span>
           </a>
 
-          <a href="" className="inline-block text-gray-600 hover:text-black my-4 w-full">
+          <a onClick={handleSignout} className="inline-block text-gray-600 hover:text-black my-4 w-full">
             <span className="material-icons-outlined float-left pr-2">power_settings_new</span>
             Log out
             <span className="material-icons-outlined float-right">keyboard_arrow_right</span>

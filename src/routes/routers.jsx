@@ -21,6 +21,10 @@ import HomeProductDetails from "../components/home/HomeProductDetails";
 import DashbaordAllProduct from "../pages/dashbaord/DashbaordAllProduct";
 import DashbordProductDetails from "../pages/dashbaord/DashbordProductDetails";
 import EditProduct from "../pages/dashbaord/EditProduct";
+import Overviewpage from "../pages/dashbaord/Overviewpage";
+import ComingSoonPage from "../components/shareItem/ComingSoonPage";
+import EmailChak from "../pages/SignInSignUp/EmailChak";
+import ForgotPassword from "../pages/SignInSignUp/ForgotPassword";
 
 const router=createBrowserRouter([
     {
@@ -53,6 +57,10 @@ const router=createBrowserRouter([
                 element:<HomeCosmetics></HomeCosmetics>
             },
             {
+                path:"comingSoon",
+                element:<ComingSoonPage></ComingSoonPage>
+            },
+            {
                 path:"details/:id",
                 element:<HomeProductDetails/>,
                 loader:({params})=>fetch(`http://localhost:5000/cosmetics/get/${params.id}`)
@@ -66,6 +74,14 @@ const router=createBrowserRouter([
             {
                 path:"register",
                 element:<Register></Register>
+            },
+            {
+                path:"emailChak",
+                element:<EmailChak></EmailChak>
+            },
+            {
+                path:"forgotPassword",
+                element:<ForgotPassword></ForgotPassword>
             },
         ]
         
@@ -96,6 +112,10 @@ const router=createBrowserRouter([
             {
                 path:"addproduct",
                 element:<AddProduct/>
+            },
+            {
+                path:"overview",
+                element:<Overviewpage/>
             },
             {
                 path:"editproduct/:id",

@@ -17,11 +17,11 @@ export default function Home() {
   useEffect(()=>{
     async function getCatagory() {
       
-      const categorisData = await axios.get('http://localhost:5000/catagory');
+      const categoriData = await axios.get('http://localhost:5000/catagory');
 
-      if (categorisData?.status === 200) {
-        setCategories(categorisData?.data);
-        console.log(categorisData);
+      if (categoriData?.status === 200) {
+        setCategories(categoriData?.data);
+        // console.log(categoriData);
       }
 
 
