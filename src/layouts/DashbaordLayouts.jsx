@@ -15,7 +15,7 @@ export default function DashbaordLayouts() {
   const [userInfo,setUserInfo]=useState({});
 
   useEffect(()=>{
-      fetch(`https://cosmetics-zone-server2024.vercel.app/user/${user?.email}`)
+      fetch(`https://cosmeticszoneserver2024.onrender.com/user/${user?.email}`)
       .then((res)=>res.json())
       .then((data)=>setUserInfo(data))
       

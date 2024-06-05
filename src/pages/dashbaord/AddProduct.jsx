@@ -18,21 +18,21 @@ export default function AddProduct() {
     useEffect(() => {
       async function loadCategore() {
 
-      const userData= await  axios.get(`https://cosmetics-zone-server2024.vercel.app/user/${user?.email}`) ;
+      const userData= await  axios.get(`https://cosmeticszoneserver2024.onrender.com/user/${user?.email}`) ;
       if (userData?.status === 200) {
         //   console.log(catagoriData?.data);
           setUserInfo(userData?.data);
         }
       
       
-    //   fetch(`https://cosmetics-zone-server2024.vercel.app/user/${user?.email}`)
+    //   fetch(`https://cosmeticszoneserver2024.onrender.com/user/${user?.email}`)
     //     .then((res)=>res.json())
     //     .then((data)=>setUserInfo(data))
 
 
 
 
-        const catagoriData = await axios.get("https://cosmetics-zone-server2024.vercel.app/catagory");
+        const catagoriData = await axios.get("https://cosmeticszoneserver2024.onrender.com/catagory");
         if (catagoriData?.status === 200) {
         //   console.log(catagoriData?.data);
           setCategories(catagoriData?.data);
@@ -104,7 +104,7 @@ export default function AddProduct() {
                 'Authorization': `Bearer ${token}`
               }
 
-          const postCosmetics=await axios.post("https://cosmetics-zone-server2024.vercel.app/cosmetics", cosmeticsData,{
+          const postCosmetics=await axios.post("https://cosmeticszoneserver2024.onrender.com/cosmetics", cosmeticsData,{
             headers:headers,
           });
 

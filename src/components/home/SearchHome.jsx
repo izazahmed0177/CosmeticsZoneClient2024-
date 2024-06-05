@@ -17,7 +17,7 @@ export default function SearchHome() {
   
     // const handleSearch = async () => {
     //   try {
-    //     const response = await fetch(`https://cosmetics-zone-server2024.vercel.app/search?term=${query}`);
+    //     const response = await fetch(`https://cosmeticszoneserver2024.onrender.com/search?term=${query}`);
     //     const data = await response.json();
     //     navigate('/resultsPageSearch', { state: { results: data } });
     //   } catch (error) {
@@ -50,7 +50,7 @@ export default function SearchHome() {
 //   const history=useNavigate()
 //   const handleSearch = async () => {
 //       try {
-//         const response = await axios.get(`https://cosmetics-zone-server2024.vercel.app/search?q=${query}`);
+//         const response = await axios.get(`https://cosmeticszoneserver2024.onrender.com/search?q=${query}`);
 //         history.push('/resultsPageSearch', { results: response.data });
 //       } catch (error) {
 //         console.error(error);
@@ -75,7 +75,7 @@ export default function SearchHome() {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://cosmetics-zone-server2024.vercel.app/search?query=${query}`
+        `https://cosmeticszoneserver2024.onrender.com/search?query=${query}`
       );
       const data = await response.json();
       setResults(data);

@@ -18,7 +18,7 @@ export default function Home() {
   useEffect(()=>{
     async function getCatagory() {
       
-      const categoriData = await axios.get('https://cosmetics-zone-server2024.vercel.app/catagory');
+      const categoriData = await axios.get('https://cosmeticszoneserver2024.onrender.com/catagory');
 
       if (categoriData?.status === 200) {
         setCategories(categoriData?.data);
@@ -26,7 +26,7 @@ export default function Home() {
       }
 
 
-      const cosmeticsData = await axios.get('https://cosmetics-zone-server2024.vercel.app/cosmetics');
+      const cosmeticsData = await axios.get('https://cosmeticszoneserver2024.onrender.com/cosmetics');
       // console.log(recipesData);
       // setRecipes(recipesData?.data);
       if (cosmeticsData?.status === 200) {

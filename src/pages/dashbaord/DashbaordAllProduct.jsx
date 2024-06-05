@@ -10,7 +10,7 @@ export default function DashbaordAllProduct() {
     useEffect(()=>{
         async function getCosmetics() {
       
-            const cosmeticsData = await axios.get('https://cosmetics-zone-server2024.vercel.app/cosmetics');
+            const cosmeticsData = await axios.get('https://cosmeticszoneserver2024.onrender.com/cosmetics');
       if (cosmeticsData?.status === 200) {
         setCosmetics(cosmeticsData?.data);
       }

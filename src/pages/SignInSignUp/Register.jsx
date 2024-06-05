@@ -48,13 +48,13 @@ export default function Register() {
 
 
     function getUserDb(email) {
-       fetch(`https://cosmetics-zone-server2024.vercel.app/user/${email}`)
+       fetch(`https://cosmeticszoneserver2024.onrender.com/user/${email}`)
       .then((res)=>res.json())
       .then((data)=>setUserInfo(data))
       
     }
     getUserDb(email)
-      // fetch(`https://cosmetics-zone-server2024.vercel.app/user/${email}`)
+      // fetch(`https://cosmeticszoneserver2024.onrender.com/user/${email}`)
       // .then((res)=>res.json())
       // .then((data)=>setUserInfo(data))
       
@@ -94,7 +94,7 @@ export default function Register() {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           }
-          axios.post("https://cosmetics-zone-server2024.vercel.app/user",userInfo,{
+          axios.post("https://cosmeticszoneserver2024.onrender.com/user",userInfo,{
             headers: headers
 
           }).then(()=>{

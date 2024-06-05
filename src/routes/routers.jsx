@@ -65,12 +65,12 @@ const router=createBrowserRouter([
             {
                 path:"details/:id",
                 element:<HomeProductDetails/>,
-                loader:({params})=>fetch(`https://cosmetics-zone-server2024.vercel.app/cosmetics/get/${params.id}`)
+                loader:({params})=>fetch(`https://cosmeticszoneserver2024.onrender.com/cosmetics/get/${params.id}`)
             },
             {
                 path:"categoryCosmetics/:title",
                 element:<CategoriesItem/>,
-                loader:({params})=>fetch(`https://cosmetics-zone-server2024.vercel.app/categoryCosmetics/${params.title}`)
+                loader:({params})=>fetch(`https://cosmeticszoneserver2024.onrender.com/categoryCosmetics/${params.title}`)
             },
             {
                 path:"resultsPageSearch",
@@ -140,7 +140,7 @@ const router=createBrowserRouter([
             {
                 path:"dashbaordAllProduct/dashbordProductDetails/:id",
                 element:<DashbordProductDetails/>,
-                loader:({params})=>fetch(`https://cosmetics-zone-server2024.vercel.app/cosmetics/get/${params.id}`)
+                loader:({params})=>fetch(`https://cosmeticszoneserver2024.onrender.com/cosmetics/get/${params.id}`)
             },
         ]
 
