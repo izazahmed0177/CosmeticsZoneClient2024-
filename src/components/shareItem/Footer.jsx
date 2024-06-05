@@ -64,7 +64,7 @@ export default function Footer() {
                 </div>
                 {/* <!--End Col--> */}
                 <div className="lg:mx-auto text-center sm:text-left">
-                    <h4 className="text-lg text-gray-900 font-medium mb-7">Pagedone</h4>
+                    <h4 className="text-lg text-gray-900 font-medium mb-7">Cosmetics Zone</h4>
                     <ul className="text-sm  transition-all duration-500">
                         <li className="mb-6"><a href="javascript:;"  className="text-gray-600 hover:text-gray-900">Home</a></li>
                         <li className="mb-6"><a href="javascript:;"  className=" text-gray-600 hover:text-gray-900">About</a></li>
@@ -106,7 +106,7 @@ export default function Footer() {
             {/* <!--Grid--> */}
             <div className="py-7 border-t border-gray-200">
                 <div className="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
-                    <span className="text-sm text-gray-500 ">©<a href="https://pagedone.io/">pagedone</a>2024, All rights reserved.</span>
+                    <span className="text-sm text-gray-500 ">©<a href="https://pagedone.io/">cosmeticsZone</a>2024, All rights reserved.</span>
                     <ul className="flex items-center gap-9 mt-4 lg:mt-0">
                         <li><a href="javascript:;"  className="text-sm text-gray-500">Terms</a></li>
                         <li><a href="javascript:;"  className="text-sm text-gray-500">Privacy</a></li>

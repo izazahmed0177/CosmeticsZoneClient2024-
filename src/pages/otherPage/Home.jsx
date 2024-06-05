@@ -8,6 +8,7 @@ import Hero from "../../components/home/Hero";
 import axios from "axios";
 import CategoryCard from "../../components/cards/CategoryCard";
 import CosmeticsHomeCard from "../../components/cards/CosmeticsHomeCard";
+import SearchHome from "../../components/home/SearchHome";
 
 export default function Home() {
   const [cosmetics,setCosmetics]=useState()
@@ -45,6 +46,10 @@ export default function Home() {
   return (
     <>
     
+    <div className="flex justify-center py-3">
+        <SearchHome></SearchHome>
+
+    </div>
         <Header></Header>
         <Hero></Hero>
 

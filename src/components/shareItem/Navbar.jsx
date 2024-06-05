@@ -7,6 +7,7 @@ import auth from "../../firebase/firebase.config";
 import Swal from 'sweetalert2'
 import toast from "react-hot-toast";
 import { reload } from "firebase/auth";
+// import SearchComponent from "../../pages/SearchComponent";
 
 export default function Navbar() {
 
@@ -35,7 +36,7 @@ export default function Navbar() {
 
             const response = await fetch(`http://localhost:5000/user/${user?.email}`)
 
-            console.log("response = ", response);
+            // console.log("response = ", response);
             let data = await response.json();
             setUserInfo(data) //updt state
               setFetching(false);
@@ -53,7 +54,7 @@ export default function Navbar() {
       },[user,userInfoDb,signOut,isFetching])
 
       if (isFetching) {
-        console.log("data loading ......")
+        // console.log("data loading ......")
         // alert ("data loading")
         
     }
@@ -97,7 +98,7 @@ export default function Navbar() {
             {/* Navbar */}
             <nav className="bg-black p-4">
                 <div className="container mx-auto flex flex-col lg:flex-row justify-between items-center">
-                    <div className="text-white font-bold text-3xl mb-4 lg:mb-0 hover:text-orange-600 hover:cursor-pointer">Porfolio </div>
+                    <div className="text-white font-bold text-3xl mb-4 lg:mb-0 hover:text-orange-600 hover:cursor-pointer">Cosmetics Zone </div>
 
                     {/* Hamburger menu for small screens */}
                     <div className="lg:hidden">
@@ -121,12 +122,15 @@ export default function Navbar() {
 
                     {/* Navigation links */}
                     <div className={`lg:flex flex-col lg:flex-row ${isOpen ? 'block' : 'hidden'} lg:space-x-4 lg:mt-0 mt-4 flex flex-col items-center text-xl`}>
-                        <NavLink to={"/"}  className="text-white  px-4 py-2 hover:text-orange-600 ">Home</NavLink>
-                        <NavLink to={"/homeCosmetics"}  className="text-white  px-4 py-2 hover:text-orange-600 ">Cosmetics</NavLink>
-                        <NavLink to={"/article"}  className="text-white  px-4 py-2  hover:text-orange-600">Article</NavLink>
-                        <NavLink to={"/blog"}   className="text-white  px-4 py-2  hover:text-orange-600">Blog</NavLink>
-                        <NavLink to={"/about"}   className="text-white  px-4 py-2  hover:text-orange-600">About</NavLink>
-                        <NavLink to={"/contact"}   className="text-white  px-4 py-2  hover:text-orange-600">Contact Me</NavLink>
+                        <NavLink to={"/"}  className="text-white  px-2 py-2 hover:text-orange-600 ">Home</NavLink>
+                        <NavLink to={"/homeCosmetics"}  className="text-white  px-2 py-2 hover:text-orange-600 ">Cosmetics</NavLink>
+                        <NavLink to={"/article"}  className="text-white  px-2 py-2  hover:text-orange-600">Article</NavLink>
+                        <NavLink to={"/blog"}   className="text-white  px-2 py-2  hover:text-orange-600">Blog</NavLink>
+                        <NavLink to={"/about"}   className="text-white  px-2 py-2  hover:text-orange-600">About</NavLink>
+                        <NavLink to={"/contact"}   className="text-white  px-2 py-2  hover:text-orange-600">Contact Me</NavLink>
+                    </div>
+                    <div>
+                        {/* <SearchComponent></SearchComponent> */}
                     </div>
 
                     <div className="flex gap-2">

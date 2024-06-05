@@ -25,6 +25,8 @@ import Overviewpage from "../pages/dashbaord/Overviewpage";
 import ComingSoonPage from "../components/shareItem/ComingSoonPage";
 import EmailChak from "../pages/SignInSignUp/EmailChak";
 import ForgotPassword from "../pages/SignInSignUp/ForgotPassword";
+import CategoriesItem from "../pages/CategoriesItem";
+import ResultsPageSearch from "../pages/ResultsPageSearch";
 
 const router=createBrowserRouter([
     {
@@ -64,6 +66,16 @@ const router=createBrowserRouter([
                 path:"details/:id",
                 element:<HomeProductDetails/>,
                 loader:({params})=>fetch(`http://localhost:5000/cosmetics/get/${params.id}`)
+            },
+            {
+                path:"categoryCosmetics/:title",
+                element:<CategoriesItem/>,
+                loader:({params})=>fetch(`http://localhost:5000/categoryCosmetics/${params.title}`)
+            },
+            {
+                path:"resultsPageSearch",
+                element:<ResultsPageSearch/>,
+                
             },
 
 

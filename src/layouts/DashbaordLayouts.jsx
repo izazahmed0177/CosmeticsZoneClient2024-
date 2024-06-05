@@ -53,7 +53,7 @@ export default function DashbaordLayouts() {
 
     <div className="fixed bg-white text-blue-800 px-10 py-1 z-10 w-full">
         <div className="flex items-center justify-between py-2 text-5x1">
-          <div className="font-bold text-blue-900 text-xl">Admin<span className="text-orange-600">Panel</span></div>
+          <div className="font-bold text-blue-900 text-xl">Admin Panel <span className="text-orange-600"> Cosmetics Zone</span></div>
           <div className="flex items-center text-gray-500">
             <span className="material-icons-outlined p-2 font-text-3xl" >search</span>
             <span className="material-icons-outlined p-2" >notifications</span>
